@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apurva Kumar - Portfolio</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0ecff, #f0f8ff);
+      color: #333;
+    }
+
+    nav {
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .navbar li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar li a:hover {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      display: none;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+/* Container to center the image */
+.image-container {
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+  height: 200px; /* Adjust this value to control the space above/below the image */
+  width: 100%; /* Full width of the section */
+}
+
+/* Style for the circular image */
+.animated-img {
+  border-radius: 50%; /* Keeps the image circular */
+  width: 150px; /* Set the size of the circle */
+  height: 150px; /* Ensure the height matches the width for a perfect circle */
+  object-fit: cover; /* Ensures the image fits properly inside the circle */
+  border: none; /* Removes any border */
+  box-shadow: none; /* Removes any shadow effect (if any) */
+}
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .highlight {
+      color: #2563eb;
+    }
+
+    .cta-button {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #1e4db7;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    a {
+      color: #2563eb;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+
+    /* Contact Form Styling */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .contact-form button {
+      padding: 12px;
+      background-color: #2563eb;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #1e4db7;
+    }
+
+    #form-status {
+      margin-top: 10px;
+      font-style: italic;
+      color: green;
+    }
+
+    /* Typewriter Animation */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #2563eb;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+      max-width: 100%;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #2563eb; }
+    }
+
+    /* Floating Image */
+    .animated-img {
+      animation: float 4s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Glowing Button */
+    .glow-button {
+      box-shadow: 0 0 10px #2563eb, 0 0 20px #2563eb66, 0 0 30px #2563eb33;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+.cert-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ddd; /* Border around the certificate icon */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  height: 150px; /* Set height for consistency */
+}
+
+.cert-placeholder .icon {
+  font-size: 50px; /* Larger icon */
+  color: #6c757d; /* Grey color for the icon */
+}
+
+.cert-placeholder p {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+.cert-card h3 {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+    .cert-card {
+      background-color: #f9f9f9;
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .cert-card h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card a:hover img {
+      transform: scale(1.05);
+    }
+#projects {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card .icon {
+  font-size: 50px;
+  color: #4CAF50; /* Icon color */
+  margin-bottom: 10px;
+}
+
+.project-info h3 {
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.project-info p {
+  font-size: 1rem;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+}
+.download-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .download-btn:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+</section>
+  
+    .dark-mode h1, 
+    .dark-mode h2, 
+    .dark-mode h3, 
+    .dark-mode h4, 
+    .dark-mode h5, 
+    .dark-mode h6, 
+    .dark-mode .project-title {
+        color: #ffffff !important;
+    }
+
+    .dark-mode .cert-placeholder a,
+    .dark-mode .cert-card a {
+        color: #aad6ff !important;
+    }
+
+    .dark-mode .cert-placeholder a:hover,
+    .dark-mode .cert-card a:hover {
+        color: #ffffff !important;
+        text-decoration: underline;
+    }
+
+    .dark-mode .cert-placeholder {
+        background-color: #2c2c2c !important;
+        border-color: #444 !important;
+    }
+    </style>
+<style>
+  .dark-mode {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    color: #f1f1f1;
+  }
+  .dark-mode nav {
+    background: #1e1e1ecc;
+  }
+  .dark-mode .section {
+    background: #2b2b2b;
+    color: #f1f1f1;
+  }
+  .dark-mode .cta-button,
+  .dark-mode .download-btn,
+  .dark-mode .glow-button {
+    background-color: #444 !important;
+    color: white;
+  }
+  .toggle-theme {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  .toggle-theme:hover {
+    background-color: #1e4db7;
+  }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+</style>
+<style>
+  .certificates-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .cert-box {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  #theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  body.dark-theme {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+
+  body.dark-theme .cert-box {
+    background-color: #1e1e1e;
+    color: white;
+  }
+</style>
+<style>
+  #theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .cert-card {
+    width: 300px;
+    flex-grow: 1;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  body.dark-theme {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+
+  body.dark-theme .cert-card {
+    background-color: #1e1e1e;
+    color: white;
+  }
+</style>
+<style>
+/* Improve content readability in dark mode */
+body.dark-theme,
+.dark-mode {
+  color: #f0f0f0;
+}
+
+.dark-mode .tagline,
+body.dark-theme .tagline {
+  color: #ddd;
+}
+
+.dark-mode .navbar li a {
+  color: #f0f0f0;
+}
+
+.dark-mode .navbar li a:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+.dark-mode .cert-placeholder p,
+.dark-mode .project-info p,
+.dark-mode p,
+.dark-mode li {
+  color: #ddd;
+}
+
+.dark-mode .cert-card,
+.dark-mode .project-card {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+}
+
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode strong {
+  color: #ffffff;
+}
+
+.dark-mode .contact-form input,
+.dark-mode .contact-form textarea {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: 1px solid #555;
+}
+
+.dark-mode .contact-form label {
+  color: #f0f0f0;
+}
+</style>
+</head>
+<body>
+<button id="theme-toggle" title="Toggle Theme">🌙</button>
+<script>
+  document.getElementById("theme-toggle").addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+  });
+</script>
+<!-- Navigation -->
+<nav>
+<ul class="navbar">
+<li><a href="#" onclick="showSection('home')">Home</a></li>
+<li><a href="#" onclick="showSection('about')">About</a></li>
+<li><a href="#" onclick="showSection('education')">Education</a></li>
+<li><a href="#" onclick="showSection('skills')">Skills</a></li>
+<li><a href="#" onclick="showSection('projects')">Projects</a></li>
+<li><a href="#" onclick="showSection('achievements')">Achievements</a></li>
+<li><a href="#" onclick="showSection('certificates')">Certificates</a></li>
+<li><a href="#" onclick="showSection('hobbies')">Hobbies</a></li>
+<li><a href="#" onclick="showSection('contact')">Contact</a></li>
+</ul>
+</nav>
+<div class="container">
+<!-- Home -->
+<section class="section active" id="home">
+<div class="hero">
+<div>
+<img alt="Apurva" class="animated-img" src="IMG_3877.jpg"/>
+</div>
+<div>
+<h1>Hi, I'm <span class="highlight">Apurva Kumar</span></h1>
+<p>I’m an undergraduate at MIT-WPU, Pune, specializing in Electronics &amp; Communication Engineering with a focus on Artificial Intelligence &amp; Machine Learning.<p>
+<p> I love building intelligent systems, exploring the logic behind technology, and connecting dots between disciplines — from code to history, and silicon to society.<p>
+<div class="tagline typewritter"><strong>“Turning curiosity into code, and ideas into innovation.”</strong></div>
+<a class="cta-button glow-button" href="#" onclick="showSection('contact')">Let's Connect</a>
+</p></p></p></p></div>
+</div>
+</section>
+<!-- About -->
+<section class="section" id="about">
+<h2>About Me</h2>
+<p><strong>I’m Apurva Kumar — an Engineer by Choice, Explorer by Nature, and Creator at Heart.</strong></p>
+<p>Welcome to my digital haven — where circuitry meets creativity, and curiosity is the compass guiding my journey.</p>
+<p>I’m currently pursuing <strong>Electronics &amp; Communication Engineering</strong> at <strong>MIT-WPU, Pune</strong>, with a specialization in the fascinating frontier of <strong>Artificial Intelligence and Machine Learning</strong>.</p>
+<p>But my world doesn’t end with silicon and syntax. I’m equally captivated by the unfolding patterns of economic systems and the silent echoes of historical revolutions. Whether it’s a line of code or a line from history, I find magic in the details and meaning in the connections.</p>
+<p>I believe true innovation lives at the intersection of diverse ideas — where tech meets thought, where data meets design, and where logic embraces imagination.</p>
+<p>Here, you’ll get a glimpse into the projects I’m building, the passions I’m nurturing, and the path I’m sketching across disciplines — with wonder, intention, and a spark of creativity.</p>
+<a class="download-btn" download="Apurva_Kumar_Resume.pdf" href="Apurva_Kumar_Resume.pdf">
+    📄 Download Resume
+  </a>
+</section>
+<!-- Education -->
+<section class="section" id="education">
+<h2>Education</h2>
+<ul>
+<li><strong>MIT World Peace University, Pune</strong>
+<p>B.Tech – Electronics &amp; Communication Engineering (Specialization: AI &amp; ML):
+<p>📍 2023 – 2027<p>
+<p>From building intelligent systems to understanding how machines think, this journey has been a mix of logic, innovation, and endless curiosity.<p>
+<p><strong>Key Highlights:</strong>
+<p>🧠 AI &amp; ML: Designing models that predict, classify, and learn like humans (well, almost!).
+<p>📡 Communication Engineering: Exploring how signals power our hyper-connected world.
+<p⚙ &="" <p="" and="" bridging="" digital="" embedded="" iot:="" physical="" realms.="" systems="" the="">🧰 Languages &amp; Tools: Python, C++, MATLAB, Arduino, and more.
+<p>💡 Extra Spark: Side quests in Economics and History, because understanding systems — whether digital or societal — is kinda my thing. — B.Tech ECE (AI &amp; ML), 2023–2027</p>
+<li><strong>Senior Secondary (Science Stream):</strong> </li>
+<p>S R DAV Public School, Purnea, Bihar
+<p>📍 2021 – 2023
+<p>Two years of hardwork, curiosity, and cracking code.
+<p>Focused on Physics, Chemistry, Mathematics, and Information Technology — where I first began falling in love with problem-solving and tech.
+        <li><strong>Secondary Education: </strong></li>
+<p>S R DAV Public School, Purnea, Bihar
+<p>📍 2010 – 2021
+<p>The foundation of everything. This is where I discovered my love for logic, my hunger to learn, and the thrill of chasing answers to big questions.
+      </p></p></p></p></p></p></p></p⚙></p></p></p></p></p></p></p></p></li></ul>
+</section>
+<!-- Skills -->
+<section class="section" id="skills">
+<h2>Skills</h2>
+<ul>
+<li><strong>🧠 Core AI &amp; ML:</strong></li>
+<p>Machine Learning (Supervised &amp; Unsupervised)
+<p>Deep Learning (Neural Networks, CNNs, RNNs)
+<p>Data Preprocessing &amp; Feature Engineering
+<li><strong>💻 Programming Languages:</strong></li>
+<p>Python 🐍
+<p>C++
+<p>MATLAB
+<p>Basics of HTML/CSS/JS (for tinkering!)
+<li><strong>📡 Electronics &amp; Communication:</strong></li>
+<p>Digital &amp; Analog Circuits
+<p>Signal Processing
+<p>Microcontrollers (Arduino,C8051F340)
+<p>Embedded Systems &amp; IoT
+<li><strong>🛠 Tools &amp; Technologies:</strong></li>
+<p>Google Colab
+<p>Git &amp; GitHub
+<p>MATLAB Simulink
+<p>VS Code
+<li><strong>🌐 Soft Skills &amp; Extras:</strong></li>
+<p>Problem-Solving &amp; Logical Thinking
+<p>Communication &amp; Team Collaboration
+<p>Curiosity for Economics &amp; History
+<p>Quick Learner &amp; Adaptive<p>
+</p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></ul>
+</section>
+<!-- Projects -->
+<section class="section" id="projects">
+<h2>Projects</h2>
+<div class="projects-list">
+<div class="project-card">
+<div class="icon">🚧</div>
+<div class="project-info">
+<h3>Sensor &amp; Actuators</h3>
+<p>2nd Level ADAS</p>
+</div>
+</div>
+<div class="project-card">
+<div class="icon">💡</div>
+<div class="project-info">
+<h3>Basic Of Electrical Engineering</h3>
+<p>Rain Sensing Roof</p>
+</div>
+</div>
+<div class="project-card">
+<div class="icon">📈</div>
+<div class="project-info">
+<h3>Engineering Physics</h3>
+<p>Diffraction through a Single Slit using a 'Blade'</p>
+</div>
+</div>
+<div class="project-card">
+<div class="icon">🔌</div>
+<div class="project-info">
+<h3>Engineering Chemistry</h3>
+<p>Research about Fuel Cell</p>
+</div>
+</div>
+<div class="project-card">
+<div class="icon">💻</div>
+<div class="project-info">
+<h3>Signal &amp; Systems</h3>
+<p>Signal Processing</p>
+</div>
+</div>
+<div class="project-card">
+<div class="icon">🧠</div>
+<div class="project-info">
+<h3>Digital Electronics</h3>
+<p>Basic of Logic Gates</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements -->
+<section class="section" id="achievements">
+<h2>Achievements</h2>
+<ul>
+<li>Winner of school tech-fest</li>
+<li>Top scorer in inter-school science olympiad</li>
+<li>Selected for Dubai Expo via Govt. Exam</li>
+</ul>
+</section>
+<!-- Certificates -->
+<section class="section" id="certificates" style="padding: 2rem;">
+<h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">📜 Certificates</h2>
+<div class="cert-grid">
+<!-- Certificate Card -->
+<div class="cert-card">
+<h3>Introduction to Financial Learning</h3>
+<a href="IUx MONEY1 Certificate _ edX.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span> <!-- 📈 (chart icon) as a placeholder -->
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Teamwork &amp; Collaboration</h3>
+<a href="RITx LEAD102 Certificate _ edX.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Critical Thinking &amp; Problem Solving</h3>
+<a href="RITx LEAD103 Certificate _ edX.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Data Visualization with Excel &amp; Cognos</h3>
+<a href="IBM DV0130 Certificate _ edX.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Measuring Sustainable Development</h3>
+<a href="SDGAcademyX SDGi001 Certificate _ edX.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Social-Emotional Learning</h3>
+<a href="UCR EDUC833 Certificate _ edX.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>MATLAB Onramp</h3>
+<a href="MATLAB Onramp.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Signal Processing Onramp</h3>
+<a href="Signal Processing Certificate.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
+<h3>Arduino Training</h3>
+<a href="APURVA-KUMAR-Participant-Certificate.pdf" target="_blank">
+<div class="cert-placeholder">
+<span class="icon">📈</span>
+<p>View Certificate</p>
+</div>
+</a>
+</div>
+</div> <!-- close the grid container -->
+</section> <!-- properly close certificates section -->
+<!-- Hobbies Section -->
+<section class="section" id="hobbies">
+<h2 class="text-2xl font-bold text-white mb-4">✨ My Hobbies</h2>
+<ul class="list-disc ml-6 text-left text-gray-300 space-y-4">
+<li>
+      📰 <strong>Reading Newspapers</strong> – I enjoy starting my day by diving into the latest news and developments. It's a habit that keeps me informed, encourages critical thinking, and helps me understand the broader world around me.
+    </li>
+<li>
+      🧠 <strong>Exploring AI Innovations</strong> – I’m deeply passionate about Artificial Intelligence. Whether it's learning about cutting-edge models, real-world applications, or creative problem-solving using AI, I'm always eager to stay on the frontier of tech.
+    </li>
+<li>
+      🏏♟ <strong>Playing Cricket &amp; Chess</strong> – Cricket fuels my energy and team spirit, while chess challenges my strategic thinking and patience. Together, they balance both my physical enthusiasm and intellectual curiosity.
+    </li>
+<li>
+  📖 <strong>Reading Books</strong> – Books are more than just a pastime for me—they’re windows into different worlds. I particularly enjoy reading:
+  <ul class="list-disc ml-6 mt-2">
+<li><strong>Historical Non-fiction:</strong> Stories and accounts that bring past events and civilizations to life.</li>
+<li><strong>Economic Thought:</strong> Books that explore how economies work, financial systems evolve, and decisions shape our world.</li>
+<li><strong>Science &amp; Technology:</strong> Reads that dive into futuristic innovations, artificial intelligence, and scientific revolutions.</li>
+<li><strong>Self-Development:</strong> Inspirational and motivational books that help sharpen mindset and personal growth.</li>
+</ul>
+  Every book I read adds something new to how I think, learn, and imagine.
+</li>
+</ul>
+</section>
+<!-- Contact -->
+<!-- Contact -->
+<section class="section" id="contact">
+<h2>Contact Me</h2>
+<p>Got a question, opportunity, or just want to say hello? I’d love to hear from you!</p>
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<!-- Contact Form -->
+<div style="flex: 1 1 300px;">
+<form class="contact-form" onsubmit="handleSubmit(event)">
+<label for="name"><i class="fas fa-user"></i> Name</label>
+<input id="name" name="name" placeholder="Your Name" required="" type="text"/>
+<label for="email"><i class="fas fa-envelope"></i> Email</label>
+<input id="email" name="email" placeholder="your@example.com" required="" type="email"/>
+<label for="message"><i class="fas fa-comment-dots"></i> Message</label>
+<textarea id="message" name="message" placeholder="Write your message here..." required="" rows="5"></textarea>
+<button class="glow-button" type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+</form>
+<div id="form-status"></div>
+</div>
+<!-- Direct Contact Info -->
+<div style="flex: 1 1 250px;">
+<h3>Reach Me Directly</h3>
+<p><i class="fas fa-envelope-open-text"></i> <strong>Email:</strong><br/>
+<a href="mailto:apurva.k@mitwpu.edu.in">apurva.k@mitwpu.edu.in</a></p>
+<p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong><br/>
+<a href="tel:+918102034453">+91 81020 34453</a></p>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong><br/> Pune, India</p>
+<h3>Find Me Online</h3>
+<p>
+<a href="https://github.com/Apurva-0210" style="text-decoration: none; display: inline-block; margin-right: 15px;" target="_blank">
+<i class="fab fa-github fa-lg"></i> GitHub
+        </a>
+<a href="https://linkedin.com/in/apurva-kumar-74b6a62a3" style="text-decoration: none;" target="_blank">
+<i class="fab fa-linkedin fa-lg"></i> LinkedIn
+        </a>
+</p>
+<h4>Socials:</h4>
+<p>
+<a href="https://www.instagram.com/apurva_._0210/" rel="noopener noreferrer" target="_blank">
+<img 0="" alt="Instagram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="width:32px;height:32px;vertical-align:middle;"/>
+</a></p>
+</div>
+</div></section>
+<footer>
+<strong> © 2025 Apurva Kumar. All Rights Reserved.</strong>
+</footer>
+</div>
+<script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const status = document.getElementById('form-status');
+
+      status.textContent = "Message sent! I'll get back to you soon.";
+      form.reset();
+
+      setTimeout(() => {
+        status.textContent = '';
+      }, 5000);
+    }
+  </script>
+<script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+  });
+</script>
+</body>
+</html>
